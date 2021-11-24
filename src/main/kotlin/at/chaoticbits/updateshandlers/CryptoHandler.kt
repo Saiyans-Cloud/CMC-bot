@@ -181,8 +181,8 @@ open class CryptoHandler : TelegramLongPollingBot() {
                 startCommand()
             command.substring(0, indexOfCommandEnd(command)) == Commands.help ->
                 helpCommand(this.botUsername)
-            else ->
-                commandNotFound(command)
+            // else ->
+            //     commandNotFound(command)
         }
     }
 
