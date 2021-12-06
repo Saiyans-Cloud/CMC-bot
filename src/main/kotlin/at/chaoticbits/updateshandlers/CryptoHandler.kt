@@ -103,7 +103,7 @@ open class CryptoHandler : TelegramLongPollingBot() {
                         sendMessageRequest.text = escapeMessage(e.message)
                     }
 
-                    if (sendMessageRequest.text != null)
+                    if (sendMessageRequest.text != null && sendMessageRequest.text != "commandNotFound")
                         execute(sendMessageRequest)
                 }
             }
@@ -168,7 +168,6 @@ open class CryptoHandler : TelegramLongPollingBot() {
         return answerQuery
     }
 
-    
     /**
      * Pocceses user commands that except a String as a response
      *
@@ -182,8 +181,8 @@ open class CryptoHandler : TelegramLongPollingBot() {
                 startCommand()
             command.substring(0, indexOfCommandEnd(command)) == Commands.help ->
                 helpCommand(this.botUsername)
-            else ->
-                println("Command not found")
+             else ->
+                "commandNotFound"
         }
     }
 
