@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!--/*@thymesVar id="currencyDetails" type="at.chaoticbits.currencydetails.CurrencyDetails"*/-->
+<!--/*@thymesVar id="DecimalFormatter" type="at.chaoticbits.config.DecimalFormatter"*/-->
+<!--/*@thymesVar id="change24hColor" type="java.util.String"*/-->
+<!--/*@thymesVar id="low24hColor" type="java.util.String"*/-->
+<!--/*@thymesVar id="high24hColor" type="java.util.String"*/-->
+
+
+<head>
+    <title>Currency Details</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+
+    <style>
+        .head-panel {
+            background-color: #212121;
+            color: white;
+            text-align: center;
+            height: 180px;
+        }
+
+        .head-panel span {
+            font-size: 65px;
+            vertical-align: center;
+            line-height: 170px;
+            font-weight: bold;
+        }
+
+        .status-container {
+            height: 350px;
+            text-transform: uppercase;
+            color: white;
+            text-align: center;
+            border: 1px solid black;
+        }
+
+        .status-container-title {
+            margin-top:40px;
+            font-size: 63px;
+        }
+
+        .status-container-content {
+            font-weight: bold;
+            font-size: 75px;
+            line-height: 150px;
+        }
+
+        .blue {
+            background-color: #1565C0;
+        }
+
+        .darkblue {
+            background-color: #0D47A1;
+        }
+
+        .darkpurple {
+            background-color: #4527A0;
+        }
+
+        .custom-col-sm-4 {
+            width: 33.24%;
+            float: left;
+        }
+
+        .custom-col-sm-12 {
+            width: 100%;
+            float: left;
+        }
+    </style>
+
+</head>
+
+<body>
+<div>
+
+    <!--Header-->
+    <div class="head-panel">
+        <span th:text="${currencyDetails.getName()} + ' (' + ${currencyDetails.getSymbol()} + ')'"></span>
+    </div>
+
+    <!--Body-->
+    <div>
+
+        <!--Price Information-->
+
+        <div class="custom-col-sm-4 status-container darkblue">
+            <p class="status-container-title">Price USD</p>
+            <p class="status-container-content" th:text="${DecimalFormatter.formatPrice(currencyDetails.getPriceUsd())}"></p>
+        </div>
+        <div class="custom-col-sm-4 status-container" th:style="'background-color:' + ${change24hColor}">
+            <p class="status-container-title">Change 24h</p>
+            <p class="status-container-content" th:text="${DecimalFormatter.formatPercentage(currencyDetails.change24h)}"></p>
+        </div>
+        <div class="custom-col-sm-4 status-container darkblue">
+            <p class="status-container-title">Price BTC</p>
+            <p class="status-container-content" th:text="${DecimalFormatter.formatPrice(currencyDetails.getPriceBtc(), ' ')}"></p>
+        </div>
+
+
+        <div class="custom-col-sm-4 status-container blue">
+            <p class="status-container-title">Open 24h</p>
+            <p class="status-container-content" th:text="${DecimalFormatter.formatPrice(currencyDetails.open24h)}"></p>
+        </div>
+        <div class="custom-col-sm-4 status-container darkblue">
+            <p class="status-container-title">High 24h</p>
+            <p class="status-container-content" th:text="${DecimalFormatter.formatPrice(currencyDetails.high24h)}"></p>
+        </div>
+        <div class="custom-col-sm-4 status-container blue">
+            <p class="status-container-title">Low 24h</p>
+            <p class="status-container-content" th:text="${DecimalFormatter.formatPrice(currencyDetails.low24h)}"></p>
+        </div>
+
+        <!--MarketCap-->
+        <div class="custom-col-sm-12 status-container darkpurple">
+            <p class="status-container-title">MarketCap</p>
+            <p class="status-container-content" th:text="${DecimalFormatter.formatPrice(currencyDetails.getMarketCap())}"></p>
+        </div>
+
+        <!--Volume-->
+        <div class="custom-col-sm-12 status-container darkpurple">
+            <p class="status-container-title">Volume 24h</p>
+            <p class="status-container-content" th:text="${DecimalFormatter.formatPrice(currencyDetails.getVolume24h())}"></p>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

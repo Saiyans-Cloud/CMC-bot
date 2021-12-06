@@ -1,0 +1,13 @@
+# Name of your Telegram Bot
+botName: !!str "testingcmbot"
+
+# For a full list of all symbols see: https://min-api.cryptocompare.com/data/all/coinlist
+# Example: [ETH, BTC]. If empty, every currency is allowed to request.
+allowedSymbols: []
+
+# Deletes sent photo messages automatically
+# after the given `autoclearMessagesDurationSec` if set to `true`.
+autoclearMessages: true
+
+# Number in seconds after sent photo messages should be deleted
+autoclearMessagesDurationSec: 1800
