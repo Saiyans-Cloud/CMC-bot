@@ -88,7 +88,6 @@ class CryptoHandlerTest {
         Assert.assertEquals(0, inlineQueryResults.size)
     }
 
-
     @Test
     fun testTextRequest() {
         var replyMessage = cryptoHandler.textRequest(Commands.start)
@@ -96,9 +95,6 @@ class CryptoHandlerTest {
 
         replyMessage = cryptoHandler.textRequest(Commands.help)
         Assert.assertThat(replyMessage, containsString("You can control me"))
-
-        // replyMessage = cryptoHandler.textRequest("/commandnotfound")
-        // Assert.assertThat(replyMessage, containsString("Command not found"))
     }
 
 

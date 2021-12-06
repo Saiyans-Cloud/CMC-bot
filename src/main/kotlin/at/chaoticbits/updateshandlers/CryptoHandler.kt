@@ -168,6 +168,7 @@ open class CryptoHandler : TelegramLongPollingBot() {
         return answerQuery
     }
 
+    
     /**
      * Pocceses user commands that except a String as a response
      *
@@ -181,8 +182,8 @@ open class CryptoHandler : TelegramLongPollingBot() {
                 startCommand()
             command.substring(0, indexOfCommandEnd(command)) == Commands.help ->
                 helpCommand(this.botUsername)
-             else ->
-                 commandNotFound(command)
+            else ->
+                println("Command not found")
         }
     }
 
